@@ -1,0 +1,21 @@
+<%= form_with model: upload, data: { controller: "upload-progress" }, html: { multipart: true, id: "upload_form" } do |form| %>
+  <% if upload.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+      <ul>
+        <% upload.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :file %>
+  <%= form.file_field :file %>
+
+  <%= form.submit "Загрузить файл" %>
+  <progress data-upload-progress-target="progress" value="0" max="100"></progress>
+<% end %> 
