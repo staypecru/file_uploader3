@@ -8,7 +8,10 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
     @upload.save
-    respond_to :turbo_stream
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to uploads_path, notice: "Файл загружен" }
+    end
   end
 
   private

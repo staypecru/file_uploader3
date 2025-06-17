@@ -1,5 +1,8 @@
 <% if @upload.persisted? %>
   <%= turbo_stream.prepend "uploads", partial: "upload", locals: { upload: @upload } %>
+  <%= turbo_stream.replace "upload_form" do %>
+    <%= render "form", upload: Upload.new %>
+  <% end %>
 <% else %>
   <%= turbo_stream.replace "upload_form" do %>
     <%= render "form", upload: @upload %>
