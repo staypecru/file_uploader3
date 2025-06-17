@@ -1,4 +1,4 @@
-<%= form_with model: upload, data: { controller: "upload-progress" }, html: { multipart: true, id: "upload_form" } do |form| %>
+<%= form_with model: upload, html: { multipart: true, id: "upload_form" } do |form| %>
   <% if upload.errors.any? %>
     <div class="error-messages">
       <h2><%= pluralize(upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
@@ -14,8 +14,8 @@
   <%= form.text_field :title %>
 
   <%= form.label :file %>
-  <%= form.file_field :file %>
+  <%= form.file_field :file, direct_upload: true %>
 
   <%= form.submit "Загрузить файл" %>
-  <progress data-upload-progress-target="progress" value="0" max="100"></progress>
+  <progress id="upload-progress" value="0" max="100"></progress>
 <% end %> 
