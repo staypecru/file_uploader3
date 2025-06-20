@@ -23,6 +23,7 @@ services:
     depends_on:
       - db
     volumes:
+      - .:/web
       - ./storage:/web/storage
       - ./log:/web/log
       - ./tmp:/web/tmp
