@@ -1,7 +1,7 @@
 <div id="upload_<%= upload.id %>">
   <% if upload.file.attached? %>
     <p>
-      Скачать файл: <%= link_to upload.title, rails_blob_path(upload.file, disposition: "attachment") %>
+      Скачать файл: <%= link_to upload.title.present? ? upload.title : upload.file.filename, rails_blob_path(upload.file, disposition: "attachment") %>
     </p>
   <% end %>
 </div>
